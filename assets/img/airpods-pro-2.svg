@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="AirPods Pro 2">
+  <defs>
+    <radialGradient id="glow" cx=".5" cy=".4" r=".55">
+      <stop offset="0" stop-color="#5aa9d6" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#5aa9d6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="white" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dde3ea"/>
+    </linearGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="120" y="120" width="660" height="660" fill="url(#glow)"/>
+  <ellipse cx="450" cy="772" rx="205" ry="32" fill="url(#floor)"/>
+
+  <g transform="rotate(-13 412 545)">
+    <rect x="398" y="368" width="30" height="190" rx="15" fill="url(#white)" stroke="#cdd4dc" stroke-width="2"/>
+    <ellipse cx="413" cy="368" rx="40" ry="47" fill="url(#white)" stroke="#cdd4dc" stroke-width="2"/>
+    <ellipse cx="435" cy="352" rx="16" ry="12" fill="#b3bcc6"/>
+  </g>
+  <g transform="rotate(13 488 545)">
+    <rect x="472" y="356" width="30" height="202" rx="15" fill="url(#white)" stroke="#cdd4dc" stroke-width="2"/>
+    <ellipse cx="487" cy="356" rx="40" ry="47" fill="url(#white)" stroke="#cdd4dc" stroke-width="2"/>
+    <ellipse cx="465" cy="340" rx="16" ry="12" fill="#b3bcc6"/>
+  </g>
+
+  <rect x="300" y="500" width="300" height="250" rx="70" fill="url(#white)" stroke="#cdd4dc" stroke-width="2"/>
+  <rect x="332" y="512" width="236" height="40" rx="20" fill="#c2cad2"/>
+  <ellipse cx="450" cy="690" rx="120" ry="20" fill="#ffffff" opacity=".5"/>
+  <circle cx="450" cy="715" r="9" fill="#9aa3ad"/>
+</svg>

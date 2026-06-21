@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 900" role="img" aria-label="iPhone 16 Pro">
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9ecf1"/>
+      <stop offset=".28" stop-color="#a9b1bc"/>
+      <stop offset=".52" stop-color="#d2d7df"/>
+      <stop offset=".74" stop-color="#969fab"/>
+      <stop offset="1" stop-color="#c6ccd4"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".55"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12161d"/>
+      <stop offset="1" stop-color="#05070a"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".20"/>
+      <stop offset=".42" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="b1" cx=".3" cy=".25" r=".55">
+      <stop offset="0" stop-color="#7b6cff" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#7b6cff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b2" cx=".75" cy=".55" r=".55">
+      <stop offset="0" stop-color="#1fc9a6" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#1fc9a6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b3" cx=".52" cy=".88" r=".6">
+      <stop offset="0" stop-color="#ff7a59" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#ff7a59" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#000000" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="screenClip"><rect x="171" y="118" width="298" height="664" rx="60"/></clipPath>
+  </defs>
+
+  <ellipse cx="320" cy="826" rx="186" ry="32" fill="url(#floor)"/>
+
+  <rect x="150" y="96" width="340" height="708" rx="84" fill="url(#frame)"/>
+  <rect x="150" y="96" width="340" height="708" rx="84" fill="url(#rim)" opacity=".7"/>
+
+  <rect x="145" y="250" width="6" height="46" rx="3" fill="#8b929c"/>
+  <rect x="145" y="318" width="6" height="80" rx="3" fill="#8b929c"/>
+  <rect x="489" y="300" width="6" height="96" rx="3" fill="#8b929c"/>
+
+  <rect x="171" y="118" width="298" height="664" rx="60" fill="url(#screen)"/>
+  <g clip-path="url(#screenClip)">
+    <rect x="171" y="118" width="298" height="664" fill="#06080c"/>
+    <circle cx="250" cy="300" r="225" fill="url(#b1)"/>
+    <circle cx="432" cy="470" r="235" fill="url(#b2)"/>
+    <circle cx="320" cy="700" r="250" fill="url(#b3)"/>
+    <rect x="171" y="118" width="298" height="664" fill="url(#gloss)"/>
+    <path d="M171 188 L469 118 L469 250 L171 372 Z" fill="#ffffff" opacity=".05"/>
+  </g>
+
+  <rect x="286" y="150" width="68" height="22" rx="11" fill="#000000"/>
+</svg>

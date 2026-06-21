@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("rt-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<title>ВКЛЮЧЕНО</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+JP:wght@400;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" rel="stylesheet">
+<link href="assets/style.css" rel="stylesheet">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3/dist/model-viewer.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="runhead">
+    <span class="runhead__brand"><a class="runhead__name" href="index.html" style="text-decoration:none">ВКЛЮЧЕН</a><span class="toggle-theme" role="button" tabindex="0" aria-pressed="false" aria-label="Тёмная тема — переключить"><span class="tg-knob"></span></span></span>
+    <nav class="runhead__nav">
+      <a href="index.html">Первая полоса</a>
+      <a href="basket.html">Счёт <span class="cart-count" data-cart-count>0</span></a>
+    </nav>
+  </header>
+  <hr class="rule">
+
+  <article class="article" id="article"></article>
+
+  <hr class="rule" style="margin-top:40px">
+  <footer class="colophon">
+    <span class="jp">印刷 · отпечатано в чёрно-белом</span>
+    <span>© 2026 ВКЛЮЧЕНО</span>
+  </footer>
+
+</div>
+
+<script src="assets/catalog.js"></script>
+<script src="assets/cart.js"></script>
+<script src="assets/fx.js"></script>
+<script>
+(function(){
+  var fmt = window.formatPrice;
+  var id = new URLSearchParams(location.search).get("id");
+  var p = id && window.getProduct(id);
+  var box = document.getElementById("article");
+
+  if(!p){
+    box.innerHTML = '<p class="dek" style="text-align:center;margin:40px 0">Такой статьи в номере нет.</p>' +
+      '<p style="text-align:center"><a class="btn" href="index.html">← На первую полосу</a></p>';
+    return;
+  }
+
+  document.title = p.name + " — ВКЛЮЧЕНО";
+
+  var specRows = p.specs.map(function(s){
+    return '<tr><td>' + s[0] + '</td><td>' + s[1] + '</td></tr>';
+  }).join("");
+
+  var bodyHtml = p.body.map(function(t,i){
+    return '<p' + (i===0 ? ' class="dropcap"' : '') + '>' + t + '</p>';
+  }).join("");
+
+  var MODELS = {
+    "iphone-16-pro":"k2kgBepoMU", "airpods-pro-2":"4h-eJ4xCsQa", "apple-watch-series-10":"5MFJqeBgWBn",
+    "ipad-air":"2LxocCCiDy-", "macbook-air-m4":"fEYeMIiRNHM", "mac-mini-m4":"2EHvZLax4Y3",
+    "apple-pencil-pro":"c8-OE_JtLxV", "homepod-mini":"zOQOThSpuo", "apple-tv-4k":"9veo7sZrcBZ"
+  };
+  var has3d = !!MODELS[p.id];
+  var hasPhoto = !!p.image;
+  var heroClass = (has3d || hasPhoto) ? ("hero hero--has-photo" + (has3d ? " hero--3d" : "")) : "hero";
+  var heroPhoto = has3d
+    ? '<div class="hero__photo"><model-viewer src="assets/models/' + p.id + '.glb" alt="' + p.name + '" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="45deg" interaction-prompt="none" disable-zoom touch-action="pan-y" shadow-intensity="0" exposure="1.05" loading="eager"></model-viewer></div>'
+    : (hasPhoto ? '<div class="hero__photo"><img src="' + p.image + '" alt="' + p.name + '" draggable="false"></div>' : "");
+  var heroCap = has3d
+    ? 'Наведите курсор — 3D-модель вращается; потяните мышью, чтобы покрутить. <a href="https://poly.pizza/m/' + MODELS[p.id] + '" target="_blank" rel="noopener">3D · Poly Pizza ↗</a>'
+    : (hasPhoto ? "Наведите курсор — гравюра оживает: цвет и движение." : "［гравюра］ «ВКЛЮЧЕНО» — изделие в двух тонах.");
+
+  box.innerHTML =
+    '<div class="kicker"><span class="jp">' + p.kJP + '</span> ' + p.kEN + '</div>' +
+    '<h1 class="headline article__head">' + p.name + '</h1>' +
+    '<div class="byline">Технический отдел «ВКЛЮЧЕНО» · ' + p.stat + ' · ' + p.kEN + '</div>' +
+    '<p class="dek article__dek">' + p.dek + '</p>' +
+    '<div class="factbox"><h3>Технические данные · 仕様</h3><table>' + specRows + '</table></div>' +
+    '<div class="' + heroClass + '" style="--accent:' + p.accent + '"><i class="ti ' + p.icon + '" aria-hidden="true"></i>' + heroPhoto + '</div>' +
+    '<div class="hero__cap">' + heroCap + '</div>' +
+    '<div class="article__body">' + bodyHtml + '</div>' +
+    '<div class="buybox"><div class="price-lg">' + fmt(p.price) + ' <small>спеццена номера</small></div>' +
+      '<div><button class="btn" onclick="addToBasket(\'' + p.id + '\',this)">В корзину</button> ' +
+      '<a class="btn" href="basket.html">К счёту →</a></div></div>' +
+    '<p style="margin-top:26px"><a href="index.html">← Назад на первую полосу</a></p>';
+
+  var hero = box.querySelector(".hero--has-photo");
+  var photo = hero && hero.querySelector(".hero__photo");
+  var flat = photo && photo.querySelector("img");
+  if(hero && photo && flat){
+    hero.addEventListener("mousemove", function(e){
+      var r = hero.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      photo.style.transform = "translate(" + (px*10).toFixed(1) + "px," + (py*24).toFixed(1) + "px) scale(1.07)";
+    });
+    hero.addEventListener("mouseleave", function(){ photo.style.transform = ""; });
+  }
+})();
+</script>
+</body>
+</html>

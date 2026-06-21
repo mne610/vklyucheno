@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("rt-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<title>Счёт · ВКЛЮЧЕНО</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+JP:wght@400;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" rel="stylesheet">
+<link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="runhead">
+    <span class="runhead__brand"><a class="runhead__name" href="index.html" style="text-decoration:none">ВКЛЮЧЕН</a><span class="toggle-theme" role="button" tabindex="0" aria-pressed="false" aria-label="Тёмная тема — переключить"><span class="tg-knob"></span></span></span>
+    <nav class="runhead__nav">
+      <a href="index.html">Первая полоса</a>
+      <a href="basket.html">Счёт <span class="cart-count" data-cart-count>0</span></a>
+    </nav>
+  </header>
+  <hr class="rule">
+
+  <div id="basket"></div>
+
+  <hr class="rule" style="margin-top:40px">
+  <footer class="colophon">
+    <span class="jp">御勘定 · вечерний выпуск</span>
+    <span>© 2026 ВКЛЮЧЕНО</span>
+  </footer>
+
+</div>
+
+<script src="assets/catalog.js"></script>
+<script src="assets/cart.js"></script>
+<script src="assets/fx.js"></script>
+<script>
+function step(id, d){
+  var c = window.cart.items();
+  window.cart.setQty(id, (c[id] || 0) + d);
+  render();
+}
+function checkout(){
+  document.getElementById("note").innerHTML =
+    '<div style="text-align:center;margin-top:16px">' +
+    '<span class="stamp-paid">見本 · образец</span>' +
+    '<p class="empty">Это прототип: оплата подключается в полной версии (Stripe Checkout). Заказ пока сохранён только локально.</p></div>';
+}
+function render(){
+  var fmt = window.formatPrice, c = window.cart.items();
+  var ids = Object.keys(c);
+  var html = '<div class="receipt"><div class="receipt__title">Счёт к оплате</div>' +
+    '<div class="receipt__sub">御勘定 · ВКЛЮЧЕНО — вечерний выпуск</div>';
+
+  if(ids.length === 0){
+    html += '<div class="empty">Корзина пуста.<br>Загляните на <a href="index.html">первую полосу</a>.</div></div>';
+    document.getElementById("basket").innerHTML = html;
+    return;
+  }
+
+  html += ids.map(function(id){
+    var p = window.getProduct(id), q = c[id];
+    if(!p) return "";
+    return '<div class="receipt__row"><div>' +
+      '<a class="nm" href="product.html?id=' + id + '" style="text-decoration:none">' + p.name + '</a>' +
+      '<div class="meta">' + fmt(p.price) + ' × ' + q + '</div></div>' +
+      '<div style="display:flex;align-items:center;gap:14px">' +
+      '<span style="display:inline-flex;align-items:center;gap:8px">' +
+      '<button class="btn btn--sm" onclick="step(\'' + id + '\',-1)">−</button>' +
+      '<span style="font-family:var(--font-display);min-width:14px;text-align:center">' + q + '</span>' +
+      '<button class="btn btn--sm" onclick="step(\'' + id + '\',1)">+</button></span>' +
+      '<span class="price">' + fmt(p.price * q) + '</span>' +
+      '<button class="rm" onclick="window.cart.remove(\'' + id + '\');render()">убрать</button>' +
+      '</div></div>';
+  }).join("");
+
+  html += '<div class="receipt__total"><span>Итого</span><span>' + fmt(window.cart.total()) + '</span></div>' +
+    '<div style="margin-top:18px;display:flex;gap:10px;justify-content:flex-end">' +
+    '<button class="btn" onclick="window.cart.clear();render()">Очистить</button>' +
+    '<button class="btn" onclick="checkout()">Оформить заказ</button></div>' +
+    '<div id="note"></div></div>';
+
+  document.getElementById("basket").innerHTML = html;
+}
+render();
+</script>
+</body>
+</html>

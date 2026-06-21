@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="HomePod mini">
+  <defs>
+    <radialGradient id="glow" cx=".5" cy=".45" r=".5"><stop offset="0" stop-color="#d9694a" stop-opacity=".4"/><stop offset="1" stop-color="#d9694a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="mesh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#626a74"/><stop offset=".5" stop-color="#474e57"/><stop offset="1" stop-color="#363c44"/></linearGradient>
+    <radialGradient id="top" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff9a6a" stop-opacity=".95"/><stop offset=".55" stop-color="#d9694a" stop-opacity=".7"/><stop offset="1" stop-color="#7b6cff" stop-opacity=".4"/></radialGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".26"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.7" fill="#828b95" opacity=".55"/></pattern>
+    <clipPath id="bodyClip"><rect x="300" y="332" width="300" height="300" rx="140"/></clipPath>
+  </defs>
+  <rect x="180" y="220" width="540" height="470" fill="url(#glow)"/>
+  <ellipse cx="450" cy="660" rx="180" ry="28" fill="url(#floor)"/>
+
+  <rect x="300" y="332" width="300" height="300" rx="140" fill="url(#mesh)"/>
+  <g clip-path="url(#bodyClip)"><rect x="300" y="332" width="300" height="300" fill="url(#dots)"/></g>
+  <ellipse cx="395" cy="430" rx="46" ry="120" fill="#ffffff" opacity=".10"/>
+  <ellipse cx="450" cy="356" rx="118" ry="40" fill="#2c3036"/>
+  <ellipse cx="450" cy="352" rx="92" ry="30" fill="url(#top)"/>
+</svg>

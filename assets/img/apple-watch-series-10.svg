@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Apple Watch Series 10">
+  <defs>
+    <radialGradient id="glow" cx=".5" cy=".45" r=".5">
+      <stop offset="0" stop-color="#df5638" stop-opacity=".4"/><stop offset="1" stop-color="#df5638" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef1f4"/><stop offset=".5" stop-color="#c6ccd4"/><stop offset="1" stop-color="#a9b1bb"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#43484f"/><stop offset=".5" stop-color="#2c3036"/><stop offset="1" stop-color="#3c4147"/>
+    </linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12161d"/><stop offset="1" stop-color="#05070a"/>
+    </linearGradient>
+    <radialGradient id="bb1" cx=".3" cy=".25" r=".6"><stop offset="0" stop-color="#ff7a59" stop-opacity=".9"/><stop offset="1" stop-color="#ff7a59" stop-opacity="0"/></radialGradient>
+    <radialGradient id="bb2" cx=".75" cy=".7" r=".6"><stop offset="0" stop-color="#7b6cff" stop-opacity=".85"/><stop offset="1" stop-color="#7b6cff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".24"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <clipPath id="sc"><rect x="366" y="373" width="168" height="204" rx="48"/></clipPath>
+  </defs>
+  <rect x="150" y="120" width="600" height="660" fill="url(#glow)"/>
+  <ellipse cx="450" cy="800" rx="150" ry="26" fill="url(#floor)"/>
+
+  <rect x="380" y="120" width="140" height="290" rx="40" fill="url(#band)"/>
+  <rect x="380" y="500" width="140" height="300" rx="40" fill="url(#band)"/>
+
+  <rect x="338" y="345" width="224" height="262" rx="72" fill="url(#alu)"/>
+  <rect x="560" y="430" width="20" height="34" rx="6" fill="#b7bec7"/>
+  <circle cx="582" cy="447" r="13" fill="#cdd3da" stroke="#aab2bb" stroke-width="2"/>
+  <rect x="560" y="486" width="16" height="50" rx="8" fill="#b7bec7"/>
+
+  <rect x="366" y="373" width="168" height="204" rx="48" fill="url(#scr)"/>
+  <g clip-path="url(#sc)">
+    <rect x="366" y="373" width="168" height="204" fill="#06080c"/>
+    <circle cx="410" cy="430" r="120" fill="url(#bb1)"/>
+    <circle cx="500" cy="540" r="130" fill="url(#bb2)"/>
+  </g>
+  <rect x="392" y="396" width="116" height="14" rx="7" fill="#ffffff" opacity=".85"/>
+  <rect x="392" y="420" width="80" height="10" rx="5" fill="#ff8a6a" opacity=".9"/>
+</svg>

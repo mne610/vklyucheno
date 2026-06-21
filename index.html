@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("rt-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<title>ВКЛЮЧЕНО — чёрно-белый магазин гаджетов Apple</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+JP:wght@400;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" rel="stylesheet">
+<link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topline">
+    <span>Vol. I · No. <span id="issue-no">0613</span></span>
+    <span id="dateline">Вторник, 13 июня 2026 · 令和8年</span>
+    <span>Monochrome Edition · $0</span>
+  </div>
+  <hr class="rule">
+
+  <header class="masthead">
+    <div class="masthead__name">ВКЛЮЧЕН<span class="toggle-theme" role="button" tabindex="0" aria-pressed="false" aria-label="Тёмная тема — переключить"><span class="tg-knob"></span></span></div>
+    <span class="seal" style="font-size:26px">入</span>
+    <div class="masthead__sub">オン · the world in black &amp; white</div>
+  </header>
+  <hr class="rule--double">
+  <div class="deck"><span class="jp">十選 — </span>десять самых продаваемых гаджетов Apple, строго в чёрно-белом</div>
+  <hr class="rule">
+
+  <div class="front">
+    <aside class="col col--left">
+      <div class="tategaki">世界、点く。</div>
+      <hr class="rule--thin">
+      <div class="kicker" style="margin-bottom:6px"><span class="jp">目次</span> Index</div>
+      <nav class="index-list">
+        <a href="#lead"><span>一面トップ</span><span>стр.1</span></a>
+        <a href="#cat"><span>音響 · звук</span><span>стр.2</span></a>
+        <a href="#cat"><span>時計 · часы</span><span>стр.2</span></a>
+        <a href="#cat"><span>計算機 · ПК</span><span>стр.3</span></a>
+        <a href="#cat"><span>案内広告 · все товары</span><span>стр.4</span></a>
+      </nav>
+      <hr class="rule--thin">
+      <div class="kicker" style="margin-bottom:6px">Корзина</div>
+      <a class="btn btn--block btn--sm" href="basket.html">Открыть счёт · <span data-cart-count>0</span></a>
+    </aside>
+
+    <main class="col col--mid" id="lead"></main>
+
+    <aside class="col col--right">
+      <div class="kicker" style="margin-bottom:8px"><span class="jp">新着</span> Latest</div>
+      <div id="briefs"></div>
+    </aside>
+  </div>
+
+  <hr class="rule--double" style="margin-top:18px">
+  <div class="section-label" id="cat"><span class="jp">案内広告 · </span>The full catalogue — все десять товаров</div>
+  <section class="catalogue" id="catalogue"></section>
+
+  <hr class="rule">
+  <footer class="colophon">
+    <span class="jp">印刷 · отпечатано в чёрно-белом</span>
+    <span>Политика · Экономика · Техника · Культура · Объявления</span>
+    <span>© <span id="year">2026</span> ВКЛЮЧЕНО · стр. 1</span>
+  </footer>
+
+</div>
+
+<script src="assets/catalog.js"></script>
+<script src="assets/cart.js"></script>
+<script src="assets/fx.js"></script>
+<script>
+(function(){
+  var byId = window.getProduct, fmt = window.formatPrice;
+  var lead = byId("iphone-16-pro");
+  var leadHead = "iPhone 16 Pro — самый желанный предмет в мире";
+
+  document.getElementById("lead").innerHTML =
+    '<div class="kicker"><span class="jp">一面トップ</span> Front page</div>' +
+    '<h1 class="headline lead__head">' + leadHead + '</h1>' +
+    '<p class="dek lead__dek">' + lead.dek + '</p>' +
+    '<div class="lead__art" style="--accent:' + lead.accent + '"><i class="ti ' + lead.icon + '"></i></div>' +
+    '<div class="cap">［фото 1］ снимок «ВКЛЮЧЕНО» — без естественного цвета.</div>' +
+    '<div class="lead__body"><p class="dropcap">' + lead.body[0] + '</p><p>' + lead.body[1] + '</p></div>' +
+    '<div class="buybar"><span class="price">Спеццена ' + fmt(lead.price) + '</span>' +
+      '<span><a class="btn btn--sm" href="product.html?id=' + lead.id + '">Читать</a> ' +
+      '<button class="btn btn--sm" onclick="addToBasket(\'' + lead.id + '\',this)">В корзину</button></span></div>';
+
+  var briefIds = ["airpods-pro-2","apple-watch-series-10","macbook-air-m4"];
+  document.getElementById("briefs").innerHTML = briefIds.map(function(id){
+    var p = byId(id);
+    return '<div class="brief" data-href="product.html?id=' + p.id + '" style="--accent:' + p.accent + '"><div class="kicker"><span class="jp">' + p.kJP + '</span> ' + p.kEN + '</div>' +
+      '<div class="brief__row"><i class="ti ' + p.icon + '"></i><div>' +
+      '<a class="headline brief__head" style="text-decoration:none" href="product.html?id=' + p.id + '">' + p.name + '</a>' +
+      '<div class="brief__cap">' + p.dek + '</div></div></div>' +
+      '<div class="brief__foot"><span class="price">' + fmt(p.price) + '</span>' +
+      '<button class="btn btn--sm" onclick="addToBasket(\'' + p.id + '\',this)">В корзину</button></div></div>';
+  }).join("");
+
+  document.getElementById("catalogue").innerHTML = window.CATALOG.map(function(p){
+    return '<div class="ad" data-href="product.html?id=' + p.id + '" style="--accent:' + p.accent + '"><div class="ad__top"><i class="ti ' + p.icon + '"></i>' +
+      '<a class="ad__name" href="product.html?id=' + p.id + '">' + p.name + '</a></div>' +
+      '<div class="ad__cap">' + p.dek + '</div>' +
+      '<div class="ad__foot"><span class="price">' + fmt(p.price) + '</span>' +
+      '<button class="btn btn--sm" onclick="addToBasket(\'' + p.id + '\',this)">Заказать</button></div></div>';
+  }).join("");
+
+  var leadEl = document.getElementById("lead");
+  leadEl.setAttribute("data-href", "product.html?id=" + lead.id);
+  leadEl.style.setProperty("--accent", lead.accent);
+
+  document.addEventListener("click", function(e){
+    if(e.target.closest("a, button")) return;
+    var card = e.target.closest("[data-href]");
+    if(card){ window.location.href = card.getAttribute("data-href"); }
+  });
+
+  (function(){
+    /* Japanese eras (nengō). To add a future era, prepend {name, start}. */
+    var eras = [
+      {name:"令和", start:new Date(2019,4,1)},
+      {name:"平成", start:new Date(1989,0,8)},
+      {name:"昭和", start:new Date(1926,11,25)},
+      {name:"大正", start:new Date(1912,6,30)},
+      {name:"明治", start:new Date(1868,8,8)}
+    ];
+    function jpEra(d){
+      for(var i=0;i<eras.length;i++){
+        if(d >= eras[i].start){
+          var y = d.getFullYear() - eras[i].start.getFullYear() + 1;
+          return eras[i].name + (y === 1 ? "元" : y) + "年";
+        }
+      }
+      return d.getFullYear() + "年";
+    }
+    function pad(n){ return ("0" + n).slice(-2); }
+    function tick(){
+      var now = new Date();
+      var dl = now.toLocaleDateString("ru-RU", {weekday:"long", day:"numeric", month:"long", year:"numeric"}).replace(/\s*г\.?$/, "");
+      var elD = document.getElementById("dateline");
+      if(elD) elD.textContent = dl + " · " + jpEra(now) + " · " + pad(now.getHours()) + ":" + pad(now.getMinutes());
+      var elN = document.getElementById("issue-no");
+      if(elN) elN.textContent = pad(now.getMonth() + 1) + pad(now.getDate());
+      var elY = document.getElementById("year");
+      if(elY) elY.textContent = now.getFullYear();
+    }
+    tick();
+    setInterval(tick, 30000);
+  })();
+})();
+</script>
+</body>
+</html>

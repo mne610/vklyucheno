@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Apple TV 4K">
+  <defs>
+    <radialGradient id="glow" cx=".5" cy=".45" r=".5"><stop offset="0" stop-color="#356aa8" stop-opacity=".4"/><stop offset="1" stop-color="#356aa8" stop-opacity="0"/></radialGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3037"/><stop offset=".5" stop-color="#161a1f"/><stop offset="1" stop-color="#0a0c0f"/></linearGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef1f4"/><stop offset=".5" stop-color="#cbd1d9"/><stop offset="1" stop-color="#aab2bc"/></linearGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".26"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect x="170" y="230" width="560" height="460" fill="url(#glow)"/>
+  <ellipse cx="430" cy="680" rx="280" ry="32" fill="url(#floor)"/>
+
+  <rect x="230" y="360" width="380" height="280" rx="42" fill="url(#box)"/>
+  <rect x="230" y="360" width="380" height="120" rx="42" fill="#ffffff" opacity=".10"/>
+  <circle cx="420" cy="430" r="22" fill="#ffffff" opacity=".12"/>
+  <circle cx="288" cy="612" r="6" fill="#ffffff" opacity=".55"/>
+
+  <rect x="592" y="296" width="96" height="372" rx="46" fill="url(#alu)"/>
+  <circle cx="640" cy="372" r="42" fill="#2c3036"/>
+  <circle cx="640" cy="372" r="42" fill="none" stroke="#dfe4ea" stroke-width="3"/>
+  <circle cx="640" cy="372" r="15" fill="#3a4047"/>
+  <rect x="616" y="452" width="48" height="14" rx="7" fill="#cdd3da"/>
+  <circle cx="624" cy="520" r="11" fill="#cdd3da"/>
+  <circle cx="656" cy="520" r="11" fill="#cdd3da"/>
+  <circle cx="640" cy="586" r="13" fill="#cdd3da"/>
+</svg>

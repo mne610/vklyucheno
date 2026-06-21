@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="MacBook Air M4">
+  <defs>
+    <radialGradient id="glow" cx=".5" cy=".4" r=".55"><stop offset="0" stop-color="#5b80b3" stop-opacity=".4"/><stop offset="1" stop-color="#5b80b3" stop-opacity="0"/></radialGradient>
+    <linearGradient id="alu" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef1f4"/><stop offset=".5" stop-color="#cfd5dc"/><stop offset="1" stop-color="#b0b8c1"/></linearGradient>
+    <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dde2e8"/><stop offset="1" stop-color="#b6bdc6"/></linearGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12161d"/><stop offset="1" stop-color="#05070a"/></linearGradient>
+    <radialGradient id="m1" cx=".3" cy=".3" r=".6"><stop offset="0" stop-color="#378add" stop-opacity=".9"/><stop offset="1" stop-color="#378add" stop-opacity="0"/></radialGradient>
+    <radialGradient id="m2" cx=".75" cy=".7" r=".6"><stop offset="0" stop-color="#7b6cff" stop-opacity=".8"/><stop offset="1" stop-color="#7b6cff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="floor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <clipPath id="sc"><rect x="216" y="186" width="468" height="298" rx="8"/></clipPath>
+  </defs>
+  <rect x="120" y="150" width="660" height="560" fill="url(#glow)"/>
+  <ellipse cx="450" cy="640" rx="330" ry="30" fill="url(#floor)"/>
+
+  <rect x="200" y="170" width="500" height="330" rx="16" fill="url(#alu)"/>
+  <rect x="216" y="186" width="468" height="298" rx="8" fill="url(#scr)"/>
+  <g clip-path="url(#sc)">
+    <rect x="216" y="186" width="468" height="298" fill="#06080c"/>
+    <circle cx="330" cy="260" r="180" fill="url(#m1)"/>
+    <circle cx="560" cy="400" r="190" fill="url(#m2)"/>
+  </g>
+  <circle cx="450" cy="178" r="4" fill="#2a2f36"/>
+
+  <polygon points="160,500 740,500 792,566 108,566" fill="url(#base)"/>
+  <rect x="108" y="558" width="684" height="16" rx="8" fill="#9aa2ab"/>
+  <rect x="360" y="512" width="180" height="40" rx="8" fill="#c4cbd3"/>
+</svg>

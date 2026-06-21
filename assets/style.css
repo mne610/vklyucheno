@@ -1,0 +1,329 @@
+/* The Ringo Times — black & white newspaper storefront
+   Western (NYT-ish) base, light Japanese accents. */
+
+:root{
+  --paper:#f7f5ee;
+  --paper-2:#efece1;
+  --ink:#16140f;
+  --muted:#6a6357;
+  --hair:#1a1a1a;
+  --hair-soft:#ccc6b6;
+  --font-name:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-body:Georgia,'Times New Roman',serif;
+  --font-jp:'Noto Serif JP',serif;
+  --maxw:1080px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.6;
+  /* faint paper grain via two hairline patterns, still pure greyscale */
+  background-image:
+    repeating-linear-gradient(0deg,rgba(0,0,0,.015) 0 1px,transparent 1px 3px);
+}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:18px 22px 60px}
+
+/* ---------- shared bits ---------- */
+.kicker{
+  font-family:var(--font-display);
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:#33302a;
+}
+.kicker .jp{font-family:var(--font-jp);letter-spacing:.1em;margin-right:.5em}
+.headline{font-family:var(--font-display);font-weight:900;color:var(--ink);line-height:1.04;margin:.18em 0}
+.dek{font-family:var(--font-display);font-style:italic;color:#3d3a33;line-height:1.45}
+.price{font-family:var(--font-display);font-weight:700}
+.muted{color:var(--muted)}
+
+.rule{border:0;border-top:1px solid var(--hair);margin:12px 0}
+.rule--thin{border-top:1px solid var(--hair-soft)}
+.rule--double{border:0;border-top:3px double var(--hair);margin:8px 0}
+
+.btn{
+  display:inline-block;border:1px solid var(--ink);background:transparent;color:var(--ink);
+  font-family:var(--font-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 14px;cursor:pointer;text-decoration:none;transition:background .12s,color .12s;
+}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn--block{display:block;width:100%;text-align:center}
+.btn--sm{padding:3px 9px;font-size:11px}
+
+/* hanko-style ink seal (kept black for strict B&W) */
+.seal{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--font-jp);font-weight:900;color:var(--ink);
+  border:2px solid var(--ink);border-radius:3px;
+  box-shadow:inset 0 0 0 1px var(--paper),inset 0 0 0 3px var(--ink);
+  transform:rotate(-5deg);line-height:1;
+}
+
+/* ---------- masthead ---------- */
+.topline{display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--font-display);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3a382f}
+.masthead{text-align:center;position:relative;padding:6px 0 2px}
+.masthead__name{font-family:var(--font-name);font-weight:900;line-height:.9;display:flex;
+  align-items:baseline;justify-content:center;gap:.02em;font-size:clamp(38px,7.4vw,82px);letter-spacing:.05em}
+.masthead__toggle{width:1.26em;height:.84em;flex:none;transform:translateY(.04em)}
+.masthead__sub{font-family:var(--font-display);font-size:13px;letter-spacing:.34em;
+  text-transform:uppercase;margin-top:8px;color:#2a281f}
+.masthead .seal{position:absolute;right:4px;top:10px;width:54px;height:54px;font-size:22px}
+.deck{text-align:center;font-family:var(--font-display);font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase;color:#2a281f;padding:6px 8px}
+.deck .jp{font-family:var(--font-jp)}
+
+/* ---------- front page grid ---------- */
+.front{display:grid;grid-template-columns:1fr 2.15fr 1.15fr;gap:0}
+.col{padding:0 16px}
+.col--mid{border-left:1px solid var(--hair);border-right:1px solid var(--hair)}
+.col--left{padding-left:0}
+.col--right{padding-right:0}
+
+.tategaki{writing-mode:vertical-rl;text-orientation:mixed;font-family:var(--font-jp);
+  font-weight:900;font-size:22px;line-height:1.55;letter-spacing:.08em;height:200px;margin:4px auto 0}
+.index-list{font-family:var(--font-jp);font-size:14px;line-height:1.95}
+.index-list a{text-decoration:none;display:flex;justify-content:space-between;border-bottom:1px dotted var(--hair-soft)}
+.index-list a:hover{background:var(--paper-2)}
+
+/* lead story */
+.lead__head{font-size:clamp(30px,4.3vw,48px)}
+.lead__dek{font-size:18px;margin:6px 0 12px}
+.lead__art{border:1px solid var(--hair);text-align:center;padding:26px 0;margin-bottom:5px}
+.lead__art i{font-size:120px;color:var(--ink)}
+.cap{font-family:var(--font-jp);font-size:12px;color:var(--muted);margin-bottom:12px}
+.lead__body{font-size:15px;line-height:1.62;text-align:justify;column-count:2;column-gap:18px;
+  column-rule:1px solid var(--hair-soft)}
+.lead__body p{margin:0 0 .8em}
+.dropcap::first-letter{font-family:var(--font-display);font-weight:900;font-size:58px;line-height:.72;
+  float:left;padding:6px 8px 0 0}
+.buybar{display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid var(--hair);margin-top:12px;padding-top:10px}
+.buybar .price{font-size:22px}
+
+/* right rail briefs */
+.brief{border-bottom:1px solid var(--hair-soft);padding-bottom:12px;margin-bottom:12px}
+.brief:last-child{border-bottom:0}
+.brief__row{display:flex;gap:10px;align-items:flex-start;margin-top:4px}
+.brief__row i{font-size:38px;line-height:1}
+.brief__head{font-size:18px}
+.brief__cap{font-family:var(--font-jp);font-size:13px;color:var(--muted);line-height:1.4}
+.brief__foot{display:flex;justify-content:space-between;align-items:center;margin-top:7px}
+.brief__foot .price{font-size:16px}
+
+/* ---------- classifieds catalogue ---------- */
+.section-label{font-family:var(--font-display);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  text-align:center;color:#2a281f;margin:4px 0 8px}
+.section-label .jp{font-family:var(--font-jp)}
+.catalogue{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.ad{padding:14px 14px 12px;border-right:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+  display:flex;flex-direction:column}
+.ad:hover{background:var(--paper-2)}
+.ad__top{display:flex;gap:10px;align-items:center}
+.ad__top i{font-size:30px;line-height:1}
+.ad__name{font-family:var(--font-display);font-weight:900;font-size:17px;text-decoration:none}
+.ad__name:hover{text-decoration:underline}
+.ad__cap{font-family:var(--font-jp);font-size:13px;color:var(--muted);margin:7px 0 10px;flex:1}
+.ad__foot{display:flex;justify-content:space-between;align-items:center}
+.ad__foot .price{font-size:16px}
+
+/* ---------- running head (inner pages) ---------- */
+.runhead{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:6px}
+.runhead__name{font-family:var(--font-name);font-size:28px;font-weight:700;letter-spacing:.04em}
+.runhead__nav{font-family:var(--font-display);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.runhead__nav a{text-decoration:none;margin-left:18px}
+.runhead__nav a:hover{text-decoration:underline}
+.cart-count{font-family:var(--font-display);border:1px solid var(--ink);border-radius:50%;
+  padding:0 6px;font-size:11px;margin-left:5px}
+
+/* ---------- product article ---------- */
+.article{max-width:760px;margin:14px auto 0}
+.article__head{font-size:clamp(30px,5vw,52px)}
+.byline{font-family:var(--font-display);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  padding:6px 0;margin:10px 0}
+.article__dek{font-size:20px;margin-bottom:16px}
+.hero{border:1px solid var(--hair);text-align:center;padding:40px 0}
+.hero i{font-size:160px}
+.hero__cap{font-family:var(--font-jp);font-size:12px;color:var(--muted);text-align:center;margin:6px 0 18px}
+.article__body{font-size:17px;line-height:1.7;text-align:justify}
+.article__body p{margin:0 0 1em}
+.factbox{border:1px solid var(--hair);padding:14px 16px;margin:2px 0 18px 24px;background:var(--paper-2);float:right;width:300px}
+.factbox h3{font-family:var(--font-display);font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  margin:0 0 8px;border-bottom:1px solid var(--hair);padding-bottom:6px}
+.factbox table{width:100%;border-collapse:collapse;font-size:14px}
+.factbox td{padding:5px 0;border-bottom:1px dotted var(--hair-soft);vertical-align:top}
+.factbox td:first-child{color:var(--muted);width:42%}
+.factbox td:last-child{text-align:right;font-family:var(--font-display)}
+.buybox{border-top:3px double var(--hair);margin-top:18px;padding-top:14px;clear:both;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.price-lg{font-family:var(--font-display);font-weight:900;font-size:30px}
+.price-lg small{font-size:14px;font-weight:400;color:var(--muted);letter-spacing:.1em}
+
+/* ---------- basket / receipt ---------- */
+.receipt{max-width:620px;margin:18px auto 0;border:1px solid var(--hair);padding:24px 26px;background:#fff}
+.receipt__title{font-family:var(--font-display);text-align:center;font-weight:900;font-size:26px}
+.receipt__sub{text-align:center;font-family:var(--font-jp);color:var(--muted);font-size:13px;margin-bottom:14px}
+.receipt__row{display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:11px 0;border-bottom:1px dotted var(--hair-soft)}
+.receipt__row .nm{font-family:var(--font-display);font-weight:700}
+.receipt__row .meta{font-size:13px;color:var(--muted)}
+.receipt__row .rm{font-family:var(--font-display);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;border:0;background:none;color:var(--muted);text-decoration:underline}
+.receipt__total{display:flex;justify-content:space-between;font-family:var(--font-display);font-weight:900;
+  font-size:22px;border-top:3px double var(--hair);margin-top:12px;padding-top:12px}
+.empty{text-align:center;color:var(--muted);font-style:italic;padding:30px 0}
+.stamp-paid{display:inline-block;border:3px double var(--ink);color:var(--ink);transform:rotate(-7deg);
+  font-family:var(--font-display);font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  padding:6px 14px;font-size:14px}
+
+/* ---------- colophon ---------- */
+.colophon{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+  font-family:var(--font-display);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#3a382f}
+.colophon .jp{font-family:var(--font-jp);letter-spacing:.1em}
+
+/* ---------- responsive ---------- */
+@media (max-width:820px){
+  .front{grid-template-columns:1fr;gap:0}
+  .col{padding:0;border:0!important}
+  .col--mid{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+    padding:14px 0;margin:14px 0}
+  .col--left{order:2}.col--mid{order:1}.col--right{order:3}
+  .tategaki{height:auto;writing-mode:horizontal-tb;font-size:20px;text-align:center}
+  .lead__body{column-count:1}
+  .factbox{float:none;width:auto;margin:8px 0 20px}
+  .article{max-width:100%}
+}
+@media (max-width:540px){
+  .topline{font-size:9px}
+  .lead__body{column-count:1}
+}
+
+/* ===================================================================
+   Interactive layer — colour blooms on hover + a shadow trails the cursor
+   =================================================================== */
+
+/* product "engravings" are greyed + softly out of focus by default… */
+.ad__top i,.brief__row i,.lead__art i,.hero i{
+  color:var(--accent,var(--ink));
+  filter:grayscale(1) contrast(1.06) blur(.6px);
+  opacity:.84;
+  transition:filter .4s ease,opacity .4s ease,transform .4s ease,color .4s ease;
+}
+/* …and snap into sharp, full colour when their card is hovered */
+.ad:hover .ad__top i,
+.brief:hover .brief__row i,
+.lead__art:hover i,
+.hero:hover i{
+  filter:none;opacity:1;transform:scale(1.07);
+}
+
+.ad,.brief,.lead__art,.hero{
+  transition:background .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.ad:hover{
+  border-color:var(--accent,var(--hair))!important;
+  background:color-mix(in srgb,var(--accent,#000) 8%,var(--paper));
+  box-shadow:0 8px 26px rgba(0,0,0,.16);
+  position:relative;z-index:3;
+}
+.ad:hover .ad__name{color:var(--accent,var(--ink))}
+.brief:hover{
+  background:color-mix(in srgb,var(--accent,#000) 7%,var(--paper));
+}
+.brief:hover .brief__head{color:var(--accent,var(--ink))}
+.lead__art:hover{
+  border-color:var(--accent,var(--hair));
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+}
+.hero:hover{
+  border-color:var(--accent,var(--hair));
+  box-shadow:0 10px 34px rgba(0,0,0,.18);
+}
+
+/* soft "ink" shadow that follows the pointer like a hand over the paper */
+.cursor-shadow{
+  position:fixed;top:0;left:0;width:240px;height:240px;border-radius:50%;
+  margin:-120px 0 0 -120px;pointer-events:none;z-index:2;
+  background:radial-gradient(circle,rgba(0,0,0,.055),rgba(0,0,0,.022) 42%,transparent 64%);
+  mix-blend-mode:multiply;opacity:0;transition:opacity .6s ease;filter:blur(5px);will-change:transform;
+}
+@media (prefers-reduced-motion:reduce){.cursor-shadow{display:none}}
+@media (hover:none){.cursor-shadow{display:none}}
+
+/* article hero — reveal a colour render on hover, with up/down parallax */
+.hero{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:300px}
+.hero--has-photo{min-height:420px;padding:0}
+.hero__photo{position:absolute;inset:-7%;display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(1.06);transition:opacity .5s ease,transform .22s ease-out;
+  will-change:transform;pointer-events:none}
+.hero__photo img{height:90%;width:auto;max-width:84%;object-fit:contain;
+  filter:drop-shadow(0 22px 34px rgba(0,0,0,.22))}
+.hero--has-photo:hover .hero__photo{opacity:1}
+.hero--has-photo:hover i{opacity:0;transform:scale(.96)}
+
+/* ===== logo toggle = day / night-edition switch ===== */
+.toggle-theme{position:relative;display:inline-block;box-sizing:border-box;width:1.5em;height:.82em;border:.085em solid currentColor;border-radius:.5em;background:transparent;cursor:pointer;flex:none;vertical-align:-.04em;transition:background .28s ease}
+.toggle-theme:hover{opacity:.75}
+.toggle-theme:focus-visible{outline:2px solid var(--hair);outline-offset:3px;border-radius:22px}
+.runhead__brand{display:inline-flex;align-items:baseline;gap:3px;font-size:28px}
+.tg-knob{position:absolute;top:50%;left:.12em;width:.5em;height:.5em;border-radius:50%;background:currentColor;transform:translateY(-50%);transition:left .28s cubic-bezier(.4,0,.2,1),background .28s ease}
+[data-theme="dark"] .toggle-theme{background:currentColor}
+[data-theme="dark"] .tg-knob{left:calc(100% - .5em - .12em);background:var(--paper)}
+
+/* ===== dark "night edition" ===== */
+[data-theme="dark"]{
+  --paper:#14130f;
+  --paper-2:#1e1c16;
+  --ink:#ece6d6;
+  --muted:#9b9483;
+  --hair:#d9d3c3;
+  --hair-soft:#403c30;
+}
+[data-theme="dark"] body{background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)}
+[data-theme="dark"] .topline,
+[data-theme="dark"] .colophon,
+[data-theme="dark"] .kicker,
+[data-theme="dark"] .deck,
+[data-theme="dark"] .section-label,
+[data-theme="dark"] .masthead__sub{color:#c4beac}
+[data-theme="dark"] .dek{color:#bcb6a4}
+[data-theme="dark"] .ad{border-color:var(--hair-soft)}
+[data-theme="dark"] .brief{border-bottom-color:var(--hair-soft)}
+[data-theme="dark"] .receipt{background:var(--paper-2)}
+[data-theme="dark"] .cursor-shadow{
+  background:radial-gradient(circle,rgba(255,255,255,.07),rgba(255,255,255,.03) 42%,transparent 64%);
+  mix-blend-mode:screen;
+}
+
+/* whole gadget "article" is clickable; its title reacts on hover */
+[data-href]{cursor:pointer}
+.ad__name,.brief__head,.lead__head{transition:color .2s ease}
+.ad:hover .ad__name,
+.brief:hover .brief__head,
+#lead:hover .lead__head{text-decoration:underline;text-underline-offset:3px}
+.ad:hover .ad__name::after,
+.brief:hover .brief__head::after,
+#lead:hover .lead__head::after{content:" \2192";white-space:nowrap}
+#lead:hover .lead__head{color:var(--accent,var(--ink))}
+
+/* hover on a product render → it slowly turns 360° "in the air" (turntable);
+   spin lives on the <img>, parallax stays on .hero__photo, so they don't clash */
+.hero__photo{perspective:1100px}
+@keyframes ringo-spin{to{transform:rotateY(1turn)}}
+.hero--has-photo:hover .hero__photo img{animation:ringo-spin 3.6s linear infinite}
+@media (prefers-reduced-motion:reduce){.hero--has-photo:hover .hero__photo img{animation:none}}
+
+/* 3D model-viewer fills the hero; drag to orbit */
+.hero__photo model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent}
+.hero--3d{cursor:grab}
+.hero--3d:active{cursor:grabbing}
+.hero__cap a{color:var(--muted);text-decoration:underline}
