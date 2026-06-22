@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+JP:wght@400;700;900&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" rel="stylesheet">
 <link href="assets/style.css" rel="stylesheet">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3/dist/model-viewer.min.js"></script>
 </head>
 <body>
 <div class="wrap">
@@ -60,20 +59,10 @@
     return '<p' + (i===0 ? ' class="dropcap"' : '') + '>' + t + '</p>';
   }).join("");
 
-  var MODELS = {
-    "iphone-16-pro":"k2kgBepoMU", "airpods-pro-2":"4h-eJ4xCsQa", "apple-watch-series-10":"5MFJqeBgWBn",
-    "ipad-air":"2LxocCCiDy-", "macbook-air-m4":"fEYeMIiRNHM", "mac-mini-m4":"2EHvZLax4Y3",
-    "apple-pencil-pro":"c8-OE_JtLxV", "homepod-mini":"zOQOThSpuo", "apple-tv-4k":"9veo7sZrcBZ"
-  };
-  var has3d = !!MODELS[p.id];
   var hasPhoto = !!p.image;
-  var heroClass = (has3d || hasPhoto) ? ("hero hero--has-photo" + (has3d ? " hero--3d" : "")) : "hero";
-  var heroPhoto = has3d
-    ? '<div class="hero__photo"><model-viewer src="assets/models/' + p.id + '.glb" alt="' + p.name + '" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="45deg" interaction-prompt="none" disable-zoom touch-action="pan-y" shadow-intensity="0" exposure="1.05" loading="eager"></model-viewer></div>'
-    : (hasPhoto ? '<div class="hero__photo"><img src="' + p.image + '" alt="' + p.name + '" draggable="false"></div>' : "");
-  var heroCap = has3d
-    ? 'Наведите курсор — 3D-модель вращается; потяните мышью, чтобы покрутить. <a href="https://poly.pizza/m/' + MODELS[p.id] + '" target="_blank" rel="noopener">3D · Poly Pizza ↗</a>'
-    : (hasPhoto ? "Наведите курсор — гравюра оживает: цвет и движение." : "［гравюра］ «ВКЛЮЧЕНО» — изделие в двух тонах.");
+  var heroClass = hasPhoto ? "hero hero--has-photo" : "hero";
+  var heroPhoto = hasPhoto ? '<div class="hero__photo"><img src="' + p.image + '" alt="' + p.name + '" draggable="false"></div>' : "";
+  var heroCap = hasPhoto ? "Наведите курсор — гравюра оживает: цвет и движение." : "［гравюра］ «ВКЛЮЧЕНО» — изделие в двух тонах.";
 
   box.innerHTML =
     '<div class="kicker"><span class="jp">' + p.kJP + '</span> ' + p.kEN + '</div>' +
